@@ -21,7 +21,7 @@
         
             <form action="{{ url_for('metar') }}" method="post" name="airport_icao" class="form-control">
             <label>ICAO Code</label>
-            <input type="text" name="icao_input">
+            <input type="text" name="icao_input" placeholder="e.g EGSS">
             <input type="submit" value="Submit" class="btn btn-primary w-100">
             </form>
             {% if raw_metar %}
