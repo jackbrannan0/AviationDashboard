@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="metar" content="width=device-width, initial-scale=1.0">
+        <title>METAR</title>
+    </head>
+
+    <body>
+        <header>
+            <h1>METAR Page</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('airportInfo') }}">Airport Information</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <body>
+            <form action="{{ url_for('getMetar') }}" method="post">
+            <label>ICAO Code</label>
+            <input type="text"><br><br>
+            <input type="submit" value="Submit">
+            </form>
+            {% if raw_metar %}
+                <p>{{ raw_metar }}</p>
+            {% else %}
+                <p>Invalid Data</p>
+            {% endif %}        
+        </body>
+    </body>
+
+
+
+
+
+</html>
