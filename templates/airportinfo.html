@@ -11,12 +11,54 @@
         <header>
             <h1>Airport Information Page</h1>
             <nav>
-        <ul>
-            <li><a href="{{ url_for('index') }}">Home</a></li>
-                    <li><a href="{{ url_for('metar') }}">METAR</a></li>
-        </ul>
-    </nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('metar') }}">Metar</a></li>
+                </ul>
+            </nav>
         </header>
+
+        
+            <form action="{{ url_for('airportInfo') }}" method="post" name="airport_icao" class="form-control">
+            <label>ICAO Code</label>
+            <input type="text" name="icao_input">
+            <input type="submit" value="Submit" class="btn btn-primary w-100">
+            </form>
+
+    <div class="card mt-3">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Weather Summary</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+            {% if site is not none %}
+                <li class="list-group-item"><strong>Site:</strong> {{ site }}</li>
+            {% endif %}
+            
+            {% if elev is not none %}
+                <li class="list-group-item"><strong>Elevation:</strong> {{ elev }}M</li>
+            {% endif %}
+            
+            {% if lat is not none %}
+                <li class="list-group-item">
+                    <strong>Latitude:</strong> 
+                    {{ lat }}
+                </li>
+            {% endif %}
+
+            {% if lon is not none %}
+                <li class="list-group-item">
+                    <strong>Longitude</strong> 
+                    {{ lon }}
+                </li>
+            {% endif %}
+            
+            {% if country is not none %}
+                <li class="list-group-item"><strong>Country:</strong> {{ country }}</li>
+            {% endif %}
+        </ul>
+    </div>  
+
+    
     </body>
     </div>
     

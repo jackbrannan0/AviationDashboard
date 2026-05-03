@@ -25,15 +25,37 @@
             <input type="submit" value="Submit" class="btn btn-primary w-100">
             </form>
             {% if raw_metar %}
-                <div class="alert alert-info">
-                    <strong></strong>{{ raw_metar }}
-                </div>
-            {% endif %}        
-            {% if error %}
-                <div class="alert alert-danger">
-                    <strong>Error:</strong>{{ error }}
-                </div>
-            {% endif %}    
+    <div class="alert alert-secondary mt-4">
+        <strong>Raw METAR:</strong> <code>{{ raw_metar }}</code>
+    </div>
+
+    <div class="card mt-3">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Weather Summary</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+            {% if temp is not none %}
+                <li class="list-group-item"><strong>Temperature:</strong> {{ temp }}°C</li>
+            {% endif %}
+            
+            {% if dewp is not none %}
+                <li class="list-group-item"><strong>Dewpoint:</strong> {{ dewp }}°C</li>
+            {% endif %}
+            
+            {% if wspd is not none %}
+                <li class="list-group-item">
+                    <strong>Wind:</strong> 
+                    {% if wdir %}{{ wdir }}° at {% else %}Variable at {% endif %}
+                    {{ wspd }} knots
+                </li>
+            {% endif %}
+            
+            {% if altim is not none %}
+                <li class="list-group-item"><strong>Altimeter:</strong> {{ altim }} inHg</li>
+            {% endif %}
+        </ul>
+    </div>
+{% endif %}    
     </body>
     </div>
     
